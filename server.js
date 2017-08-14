@@ -5,19 +5,37 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-    title: 'Article One By PRANAV JAIN',
-    heading: 'Article One',
-    date: 'Aug 18, 2017',
-    content: ` <p>
-                    Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One.
-                </p>
-                <p>
-                    Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One.
-                </p>
-                <p>
-                    Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One.
-                </p> `
+var articles = {
+    'article-one': {
+        title: 'Article One By PRANAV JAIN',
+        heading: 'Article One',
+        date: 'Aug 18, 2017',
+        content: ` <p>
+                        Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One.
+                    </p>
+                    <p>
+                        Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One.
+                    </p>
+                    <p>
+                        Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One. Hello, this is my Article One.
+                    </p> `
+        },
+    'article-two': {
+        title: 'Article Two By PRANAV JAIN',
+        heading: 'Article Two',
+        date: 'Oct 07, 2017',
+        content: ` <p>
+                        Hello, this is my Article Two.
+                    </p> `
+    },
+    'article-three': {
+        title: 'Article Three By PRANAV JAIN',
+        heading: 'Article Three',
+        date: 'July 26, 2017',
+        content: ` <p>
+                        Hello, this is my Article Three. Please kill me.
+                    </p> `
+    },
 };
 
 function createtemplate (data) {
@@ -56,9 +74,10 @@ return(htmltemplate);
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
-app.get('/article-one',function(req,res) {
-    res.send(createtemplate(articleOne));
+//articleName == article-one
+app.get('/:articleName',function(req,res) {
+    var articleName=req.params.articleName;
+    res.send(createtemplate(articles[articleName]));
 });
 
 app.get('/article-two',function(req,res) {
