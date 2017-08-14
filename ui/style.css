@@ -1,7 +1,6 @@
 body {
     font-family: garamond;
-    background-color: lightgrey;
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 .center {
@@ -26,7 +25,6 @@ body {
     color: #454343;
     font-family: garamond;
     font-size: 22;
-    padding-top: 60px;
     padding-left: 20px;
     padding-right: 20px;
 }
