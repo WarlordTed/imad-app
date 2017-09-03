@@ -1,6 +1,6 @@
 console.log('Loaded!');
 
-var img = document.getElementById('Kakashi');
+var img = document.getElementById('kakashi');
 var marginLeft = 0;
 function moveRight() {
     marginLeft = marginLeft + 10;
